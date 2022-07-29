@@ -15,6 +15,13 @@ const connection = mysql.createConnection({
     database: process.env.DB_NAME
 });
 
+connection.connect((err) =>{
+    if (err) throw err;
+    console.log('connected as id' + connection.threadId)
+    console.log();
+    promptUser();
+})
+
 //Inquirer Prompt 
 const promptUser = () => {
     inquirer.prompt([
