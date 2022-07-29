@@ -93,4 +93,52 @@ const promptUser = () => {
                     break;
             }
         })
+};
+
+//Function that pulls all departments and logs them in a table, in the console.
+
+showDepartments = () => {
+    console.log('Showing all departments...');
+    const sql = `SELECT department.id AS id, department.name AS department FROM department`; 
+  
+    connection.promise().query(sql, (err, rows) => {
+      if (err) throw err;
+      console.table(rows);
+      promptUser();
+    });
+  };
+  
+
+  showRoles = () => {
+    console.log('Showing all roles...');
+  
+    const sql = `SELECT role.id, role.title, department.name AS department
+                 FROM role
+                 INNER JOIN department ON role.department_id = department.id`;
+    
+    connection.promise().query(sql, (err, rows) => {
+      if (err) throw err; 
+      console.table(rows); 
+      promptUser();
+    })
+  };
+
+showEmployees = () => {
+
+};
+
+addDepartment = () => {
+
+};
+
+addRole = () => {
+
+};
+
+addEmployee = () => {
+
 }
+
+updateEmployee = () => {
+
+};
